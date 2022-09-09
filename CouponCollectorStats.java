@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.Stopwatch;
 import edu.princeton.cs.algs4.StdStats;
 
 public class CouponCollectorStats {
-    double[] timings;
+    private double[] timings;
     public static void main(String[] args) {
         int N = 100000;
         int[] times = {10, 100, 1000};
@@ -12,7 +12,7 @@ public class CouponCollectorStats {
         StdOut.println("N\tT\tmean\t\tstdev");
         for (int T : times){
             coupon.CouponCollectorStats(N, T);
-            StdOut.println(String.format("%d\t%d\t%.6f\t%.6f", N, T, coupon.mean(), coupon.stddev()));
+            StdOut.printf("%d\t%d\t%.6f\t%.6f\n", N, T, coupon.mean(), coupon.stddev());
         }
     }
 
@@ -23,7 +23,7 @@ public class CouponCollectorStats {
      * @param N upper bound of the range
      * @return the count of how often random was called
      */
-    public static int couponCollectorTest(int N) {
+    private int couponCollectorTest(int N) {
         int collected = 0, totalGenerated = 0;
         int[] visited = new int[N];
         while (collected < N){

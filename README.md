@@ -10,7 +10,7 @@ First we read the task description and try to figure out what we need to do:
 
 Okay, so we want to randomly pick a card from **0** to **N-1** until all cards in that range have been seen.
 
-Now we need to find a way to keep track of what cards we have seen, since the cards are numbered from **0** to **N - 1**, than thinking about an array of size **N**, where each index represents their respective card. So index **0** is card **0**, index **1** is card **1**, etc.
+First we need to find a way to keep track of what cards we have seen. Since the cards are numbered from **0** to **N - 1**, then thinking about an array of size **N** where each index represents their respective card could be one way of storing it. So index **0** is card **0**, index **1** is card **1**, etc.
 
 In java we can do that by initializing an array of size **N** as follows
 ```java
@@ -18,7 +18,7 @@ int[] seen = new int[N];
 ```
 `int[]` in the beginning means that this is an integer array, `seen` is the name of the array and `new int[N]` is saying that this array should be of size **N**.
 
-Now to represent if the card has been seen, we can use the values; **0** if it's not been seen, **1** if it has. So we want all the values to be **0** initially. Now after a quick google search on how do set all the values to **0** we find out that when generating an array like shown above, java guarantees that all the values will be set to **0** initally, so we don't have to do anything about that.
+Now to represent if the card has been seen, we can use the values; **0** if it's not been seen, **1** if it has. So we want all the values to be **0** initially. Now after a quick google search on how to set all the values to **0** we find out that when generating an array like shown above, java guarantees that all the values will be set to **0** initally, so we don't have to do anything about that.
 
 Now next we want to generate a random number and check if it has been seen before, one way of doing it is the following.
 

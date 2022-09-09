@@ -20,7 +20,7 @@ int[] seen = new int[N];
 
 Now to represent if the card has been seen, we can use the values; **0** if it's not been seen, **1** if it has. So we want all the values to be **0** initially. Now after a quick google search on how to set all the values to **0** we find out that when generating an array like shown above, java guarantees that all the values will be set to **0** initally, so we don't have to do anything about that.
 
-Now next we want to generate a random number and check if it has been seen before, one way of doing it is the following.
+Next we want to generate a random number and check if it has been seen before, one way of doing it is the following.
 
 ```java
 random_number = StdRandom.uniformInt(N);
@@ -36,9 +36,9 @@ The function `StdRandom.uniformInt(N)` is provided in the algs4 library and give
 
 Now we just need to repeat this until all cards have been found, or in other words, all values in the array are set to **1**.
 
-Here we have a new problem, how do we know if all the values in the array are set to **1**. Well one way would be to go through each value and check if it is set to **1**, but that is kinda slow since because each time we generate a new number we would have to go through the array and check if all values are set to **1**.
+Here we have a new problem, how do we know if all the values in the array are set to **1**. Well one way would be to go through each value and check if it is set to **1**, but that is kinda slow since each time we generate a new number we would have to go through the array and check if all values are set to **1**.
 
-Now we can observe that since all the values are **0** initially and only when they show up the first time we will go into the `if` clause, since in there they are set to **1** and nothing changes it back. So we could instead of going through the array each time, we only will need a counter variable saying how often we have gone into the `if` clause and when that counter reaches **N**, well then we must have entered the `if` clause **N** times and thus have found all our cards.
+Now we can observe that since all the values are **0** initially and only when they show up the first time will we go into the `if` clause, since in there they are set to **1** and nothing changes it back. So instead of going through the array each time, we only need a counter saying how often we have gone into the `if` clause and when that counter reaches **N**, well then we must have entered the `if` clause **N** times and thus have found all our cards.
 
 One way to program it is like the following.
 
@@ -58,13 +58,13 @@ public static int couponCollectorTest(int N) {
 }
 ```
 
-Here `seen_count` is counting how often we have gone into the `if` clause, `random_count` is counting how often we have called `StdRandom.uniformInt(N)` and then finally after all have been seen we return the number of random calls.
+Here `seen_count` is counting how often we have gone into the `if` clause, `random_count` is counting how often we have called `StdRandom.uniformInt(N)` and finally after all cards have been seen we return the number of random calls.
 
-So now we have programmed the coupon collector problem
+So now we have programmed the coupon collector problem.
 
 ## Little about java classes
 
-Each class in java can have methods (the class functions) and varaibles, they can be `public` or `private`. When a method or variable is `private` only the class itself should access it. Now `public` methods or variables on the other hand are to be used by anyone. (This is the same as using **_** infront of the class method or variable in python)
+Each class in java can have methods (the class functions) and variables, they can be `public` or `private`. When a method or variable is `private` only the class itself should access it. Now `public` methods or variables on the other hand are to be used by anyone. (This is the same as using **_** infront of the class method or variable in python)
 
 Defined as in the following example:
 
@@ -124,7 +124,7 @@ public void CouponCollectorStats(int N, int T) {
 
 Firstly you can see a variable `timings` which is a global array of type `double`. The type `double` is how we store floating point numbers with a precision of 15-16 digits. At the start of the function we are reseting this variable to be an empty `double` array of size `T`.
 
-Then we create a for loop that will cal our function `T` times and take the time of each call. To get the time we call the `elapsedTime` method on the `Stopwatch` class, this method returns the time since the class was initialized.
+Then we create a for loop that will call our function `T` times and take the time of each call. To get the time we call the `elapsedTime` method on the `Stopwatch` class, this method returns the time since the class was initialized.
 
 Lastly we save our result into our `timings` array.
 
@@ -176,7 +176,7 @@ public static void main(String[] args) {
 
 First we set `N = 100000`, next we create an `int` array `times` where we'll keep our values for `T` (To set a default value of an array use `{}` around the values).
 
-Now a small funky thing, java uses the `static` keyword to be able to access a method with creating an instance of the object first and because of that a `static` method can not directly call a non-static method. So first we need to create an instance of our class.
+Now a small funky thing, java uses the `static` keyword to be able to access a method without creating an instance of the object first and because of that a `static` method can not directly call a non-static method. So first we need to create an instance of our class.
 
 ```java
 CouponCollectorStats coupon = new CouponCollectorStats();
